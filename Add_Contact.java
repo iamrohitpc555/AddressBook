@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class AddressBookMain {
     public String first_Name, last_Name, address, city, state, email_Id;
     public String zip_Code, phone_Number;
-    public AddressBookMain(String first_Name, String last_Name, String address, String city, String state, String zip_Code, String phone_Number, String email_Id) {
+    public AddressBookMain(String first_Name,String last_Name,String address,String city,String state, String zip_Code, String phone_Number, String email_Id) {
         this.first_Name = first_Name;
         this.last_Name = last_Name;
         this.address = address;
@@ -72,8 +72,15 @@ public class AddressBookMain {
             System.out.println("ENTER 0 FOR ADDING CONTACT AND 1 TO EXIT");
             choice = scanner.nextInt();
             i++;
-        } while (choice != 1 && i < max_Num_Contacts);
-        System.out.println("ENTER THE CHOICE \n 1: TO DISPLAY CONTACT DETAILS\n 2: TO EDIT CONTACT DETAILS\n 3:TO EXIT");
+            if (i >= max_Num_Contacts) {
+                System.out.println("NO SPACE TO ENTER ANOTHER CONTACT");
+                choice = 1;
+            }
+        } while (choice != 1);
+        if (i > max_Num_Contacts) {
+            System.out.println("NO SPACE TO ENTER ANOTHER CONTACT");
+        }
+        System.out.println("ENTER THE CHOICE \n 1: TO DISPLAY CONTACT DETAILS\n 2: TO EDIT CONTACT DETAILS\n 3:TO DELETE A CONTACT\n4:TO EXIT");
         value = scanner.nextInt();
 
         switch (value) {
@@ -96,6 +103,17 @@ public class AddressBookMain {
                     break;
                 }
             case 3:
+                if(i>0) {
+
+                    System.out.println("ENTER THE NAME OF CONTACT TO DELETE");
+                    String first_name = scanner.next();
+                    addressBookSubClass.deleteContactDetails(first_name,addressBookMainArray);
+                    break;
+                } else {
+                    System.out.println("NO CONTACTS AVAILABLE TO DELETE");
+                    break;
+                }
+            case 4:
                 break;
         }
     }
