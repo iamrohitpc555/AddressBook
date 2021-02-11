@@ -1,42 +1,33 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class AddressBookMain {
-	public Contacts createContact() {
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Enter First Name:");
-		String firstName = sc.next();
-		
-		System.out.println("Enter Last Name:");
-		String lastName = sc.next();
-		
-		System.out.println("Enter address:");
-		String address = sc.next();
-		
-		System.out.println("Enter city:");
-		String city = sc.next();
-		
-		System.out.println("Enter state:");
-		String state = sc.next();
-		
-		System.out.println("Enter zip code:");
-		int zip = sc.nextInt();
-		
-		System.out.println("Enter phone No.:");
-		String phoneNumber = sc.next();
-		
-		System.out.println("Enter email address:");
-		String email = sc.next();
-		sc.close();
-		Contacts contact = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email);
-		
-		return contact;		
-	}
-	
-	public static void main(String[] args) {
-		
-		AddressBookMain addressBookObject = new AddressBookMain();		
-		Contacts contact = addressBookObject.createContact();
-		System.out.println("New Contact Created: " + "\n"+contact.toString());		
-	}
+    public static void main(String args[]){
+        System.out.println("Welcome to Address Book Program");
+        Scanner in = new Scanner(System.in);
+        AddressBook contact = new AddressBook();
+	    
+        System.out.print("Enter first name: ");
+        contact.firstName = in.nextLine();
+	    
+        System.out.print("Enter last name: ");
+        contact.lastName = in.nextLine();
+	    
+        System.out.print("Enter address: ");
+        contact.address = in.nextLine();
+	    
+        System.out.print("Enter city: ");
+        contact.city = in.nextLine();
+	    
+        System.out.print("Enter state: ");
+        contact.state = in.nextLine();
+	    
+        System.out.print("Enter phoneNumber: ");
+        contact.phoneNumber = in.nextLine();
+	    
+        System.out.print("Enter email: ");
+        contact.email = in.nextLine();
+	    
+        System.out.print("Enter zip: ");
+        contact.zip = in.nextLong();
+        in.close();
+    }
 }
