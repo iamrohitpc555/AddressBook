@@ -12,13 +12,14 @@ public class JDBCConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver Loaded.");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/address_book_service", "root", "Iloveyoudaddy1");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/address_book_service", "root", "rohit");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Connection getConnection() {
+
+    public synchronized Connection getConnection() {
         return connection;
     }
 
